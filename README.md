@@ -1,2 +1,4 @@
 # dbscanpp-py
-An implementation of DBSCAN++ in Python, using NumPy and SciPy.
+An implementation of DBSCAN++ in Python, using NumPy and SciPy.  
+
+While DBSCAN++ theoretically has better worst-case time complexity than traditional DBSCAN, and the [original implementation](https://github.com/aboood40091/dbscanpp) by Jennifer Jang et al has been implemented in Cython/C++ to improve performance, I have found it to be **significantly** slower than other traditional DBSCAN implementations, such as the one provided in scikit-learn. Therefore, in this repository, I provide my own implementation of DBSCAN++ in pure Python (to remove the hassle of having to setup Cython and Visual Studio on Windows), maximizing the use of NumPy and SciPy to provide competitive performance to other good DBSCAN implementations (such as the aforementioned scikit-learn implementation). Additionally, if this iterative DBSCAN++ still does not scale well to your data, you can find a distributed implementation of DBSCAN++ in PySpark [here](https://github.com/aboood40091/pyspark_dbscan/tree/dbscanpp).
