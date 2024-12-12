@@ -22,7 +22,11 @@ class DBSCAN:
         eps = self.eps
         min_samples = self.min_samples
 
+        # Ensure x is a contiguous array of doubles
+        x = np.ascontiguousarray(x, dtype=np.double)
         n = len(x)
+
+        # Initialize labels
         labels = np.full(n, CONST_UNEXPLORED, np.int_)
         cluster = CONST_CLUSTER_START
 
@@ -38,9 +42,11 @@ class DBSCAN:
             if len(neighbors) >= min_samples:
                 # Start a new cluster
                 labels[i] = cluster
+                pos = 0  # Initialize position index
 
-                while neighbors:
-                    neighbor_i = neighbors.pop(0)
+                while pos < len(neighbors):
+                    neighbor_i = neighbors[pos]
+                    pos += 1
                     if labels[neighbor_i] == CONST_NOISE:
                         labels[neighbor_i] = cluster
                     elif labels[neighbor_i] == CONST_UNEXPLORED:
