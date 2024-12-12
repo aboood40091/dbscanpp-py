@@ -80,7 +80,7 @@ class DBSCANPP:
             is_in_subset = np.ones(n, dtype=np.bool_)
         else:
             if sampling_type == SamplingType.Uniform:
-                subset_indices = np.sort(np.random.choice(np.arange(n, dtype=np.int_), m, replace=False))
+                subset_indices = np.random.choice(np.arange(n, dtype=np.int_), m, replace=False)
             elif sampling_type == SamplingType.KCenter:
                 subset_indices = k_centers(m, x)
             elif sampling_type == SamplingType.KMeansPP:
